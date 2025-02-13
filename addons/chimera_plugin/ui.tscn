@@ -1,0 +1,55 @@
+[gd_scene load_steps=7 format=3 uid="uid://catohqw2hf6d1"]
+
+[ext_resource type="Script" path="res://addons/chimera_plugin/parser/parser.gd" id="1_3me0j"]
+[ext_resource type="Script" path="res://addons/chimera_plugin/builder/builder.gd" id="2_nymq5"]
+[ext_resource type="Script" path="res://addons/chimera_plugin/components/objects.gd" id="3_prf71"]
+[ext_resource type="Script" path="res://addons/chimera_plugin/components/bt_nodes.gd" id="4_6g646"]
+[ext_resource type="PackedScene" uid="uid://d0bityooje8c3" path="res://addons/chimera_plugin/exporter/exporter.tscn" id="5_47v22"]
+
+[sub_resource type="GDScript" id="GDScript_vhvtp"]
+script/source = "@tool
+extends Button
+
+@onready var parser: ChimeraParser = $\"../Parser\"
+
+
+const json='{\"id\":\"41e86326-2687-469c-a914-1a5d076e6713\",\"name\":\"Project\",\"type\":\"3D\",\"root_type\":\"CharacterBody3D\",\"ext_app\":{\"name\":\"Godot\",\"version\":\"4.4\"},\"context\":{\"root\":{\"type\":\"CharacterBody3D\"},\"asd\":{\"type\":\"CharacterBody3D\"}},\"bt\":{\"root\":\"56d4d916-89a5-422c-85e9-67f467e2fc89\",\"nodes\":{\"56d4d916-89a5-422c-85e9-67f467e2fc89\":{\"id\":\"56d4d916-89a5-422c-85e9-67f467e2fc89\",\"name\":\"Root\",\"type\":\"Root\",\"position\":{\"x\":0,\"y\":0}},\"ba9534c4-f3c0-4e02-b7ba-4979aeb3fe3a\":{\"id\":\"ba9534c4-f3c0-4e02-b7ba-4979aeb3fe3a\",\"name\":\"Sequence\",\"type\":\"Sequence\",\"position\":{\"x\":-1,\"y\":156.75}},\"9c70151c-f752-451b-b45c-670eb3f31907\":{\"id\":\"9c70151c-f752-451b-b45c-670eb3f31907\",\"name\":\"Action Leaf\",\"type\":\"Action Leaf\",\"position\":{\"x\":-52.5,\"y\":322.75},\"params\":{\"health\":{\"type\":\"Int\",\"value\":5},\"asd\":{\"type\":\"String\",\"value\":\"hamsdaadqwd\"},\"qwe\":{\"type\":\"Boolean\",\"value\":true}},\"context_ref\":{\"health\":{\"type\":\"CharacterBody3D\",\"context_key\":\"asd\"}}},\"28030353-9d46-4892-a7d4-95500fc7882b\":{\"id\":\"28030353-9d46-4892-a7d4-95500fc7882b\",\"name\":\"Selector\",\"type\":\"Selector\",\"position\":{\"x\":184.19954874715836,\"y\":337.9224910316853}},\"1fe9b9c3-ea60-4cb1-a099-a0d8119ad5a2\":{\"id\":\"1fe9b9c3-ea60-4cb1-a099-a0d8119ad5a2\",\"name\":\"Action Leaf\",\"type\":\"Action Leaf\",\"position\":{\"x\":178.89454076437192,\"y\":501.61988021480823},\"params\":{\"health\":{\"type\":\"Int\",\"value\":5},\"asd\":{\"type\":\"String\",\"value\":\"hamsdaadqwd\"},\"qwe\":{\"type\":\"Boolean\",\"value\":true}},\"context_ref\":{\"health\":{\"type\":\"CharacterBody3D\",\"context_key\":\"\"}}}},\"edges\":{\"xy-edge__56d4d916-89a5-422c-85e9-67f467e2fc89-ba9534c4-f3c0-4e02-b7ba-4979aeb3fe3a\":{\"id\":\"xy-edge__56d4d916-89a5-422c-85e9-67f467e2fc89-ba9534c4-f3c0-4e02-b7ba-4979aeb3fe3a\",\"source\":\"56d4d916-89a5-422c-85e9-67f467e2fc89\",\"target\":\"ba9534c4-f3c0-4e02-b7ba-4979aeb3fe3a\"},\"xy-edge__ba9534c4-f3c0-4e02-b7ba-4979aeb3fe3a-9c70151c-f752-451b-b45c-670eb3f31907\":{\"id\":\"xy-edge__ba9534c4-f3c0-4e02-b7ba-4979aeb3fe3a-9c70151c-f752-451b-b45c-670eb3f31907\",\"source\":\"ba9534c4-f3c0-4e02-b7ba-4979aeb3fe3a\",\"target\":\"9c70151c-f752-451b-b45c-670eb3f31907\"},\"xy-edge__ba9534c4-f3c0-4e02-b7ba-4979aeb3fe3a-28030353-9d46-4892-a7d4-95500fc7882b\":{\"id\":\"xy-edge__ba9534c4-f3c0-4e02-b7ba-4979aeb3fe3a-28030353-9d46-4892-a7d4-95500fc7882b\",\"source\":\"ba9534c4-f3c0-4e02-b7ba-4979aeb3fe3a\",\"target\":\"28030353-9d46-4892-a7d4-95500fc7882b\"},\"xy-edge__28030353-9d46-4892-a7d4-95500fc7882b-1fe9b9c3-ea60-4cb1-a099-a0d8119ad5a2\":{\"id\":\"xy-edge__28030353-9d46-4892-a7d4-95500fc7882b-1fe9b9c3-ea60-4cb1-a099-a0d8119ad5a2\",\"source\":\"28030353-9d46-4892-a7d4-95500fc7882b\",\"target\":\"1fe9b9c3-ea60-4cb1-a099-a0d8119ad5a2\"}}}}'
+
+
+func _on_pressed() -> void:
+	parser.parse(json)
+"
+
+[node name="Ui" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.04
+anchor_bottom = 0.048
+offset_right = -38.08
+offset_bottom = -23.104
+text = "Start"
+script = SubResource("GDScript_vhvtp")
+
+[node name="Parser" type="Node" parent="."]
+script = ExtResource("1_3me0j")
+
+[node name="Builder" type="Node" parent="."]
+script = ExtResource("2_nymq5")
+
+[node name="Objects" type="Node" parent="."]
+script = ExtResource("3_prf71")
+
+[node name="BTNodes" type="Node" parent="."]
+script = ExtResource("4_6g646")
+
+[node name="Exporter" parent="." instance=ExtResource("5_47v22")]
+
+[connection signal="pressed" from="Button" to="Button" method="_on_pressed"]

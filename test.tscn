@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://l325silcgaor"]
+
+[node name="root" type="CharacterBody3D"]
+
+[node name="asd" type="CharacterBody3D" parent="."]
+
+[node name="Root" type="Node" parent="."]
+
+[node name="Sequence" type="Node" parent="Root"]
+
+[node name="Action Leaf" type="Node" parent="Root/Sequence"]
+
+[node name="Selector" type="Node" parent="Root/Sequence"]
+
+[node name="Action Leaf" type="Node" parent="Root/Sequence/Selector"]
